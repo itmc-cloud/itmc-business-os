@@ -112,18 +112,23 @@ account you use for Play Console.
    `fastlane/play-service-account.json` in this project (already
    git-ignored — never commit it).
 
-#### D. Link it in Play Console
+#### D. Grant it access in Play Console
 
-1. [Play Console](https://play.google.com/console) → **Setup → API access**.
-2. It should show the Cloud project from part A available to link — click
-   **"Link"** (or "Choose a project" if it's not auto-detected).
-3. Once linked, the service account from part C appears in a list on the
-   same page (Google connects them automatically, same Cloud project) →
-   click it → **"Grant access"**.
-4. Choose **"Release manager"** permission — enough for build uploads
-   (Fastlane pushes listing metadata under the same account either way, no
-   extra permission needed for that). Scope it to a specific app once one
-   exists, or leave it at account level for now.
+Google removed the old "link a Cloud project" step — there's no separate
+API access/linking page anymore. Service accounts are now invited exactly
+like a human teammate, via Users & Permissions:
+
+1. [Play Console](https://play.google.com/console) → **"Users and
+   permissions"** in the left sidebar.
+2. Click **"Invite new users"**.
+3. In the email field, paste the *service account's* email from part C
+   (looks like `play-publisher@<your-project-id>.iam.gserviceaccount.com`
+   — not a real email address, that's expected).
+4. Assign permissions — you want at least "Release apps to testing tracks"
+   (add production release permission too once you're ready to automate
+   full production releases). Scope to a specific app once one exists, or
+   leave it at account level for now.
+5. Click **"Invite user"**.
 
 ### 5. Configure GitHub Actions secrets
 
