@@ -31,14 +31,17 @@ future release is fully automated.
 
 ### 1. Host the privacy policy (needed for the store listing)
 
-`docs/privacy-policy.md` is already written (the app collects nothing, so
-it's a short, honest policy). Enable GitHub Pages once:
-GitHub repo → Settings → Pages → Source: "Deploy from a branch" → Branch:
-`main`, folder `/docs`. After that, editing the markdown file and pushing is
-enough to update the live policy — no further manual step. The resulting
-URL is `https://<your-github-username>.github.io/<repo-name>/privacy-policy.html`.
+✅ **Already done** — GitHub Pages is enabled (branch `main`, folder
+`/docs`), live at:
+[https://itmc-cloud.github.io/itmc-business-os/privacy-policy.html](https://itmc-cloud.github.io/itmc-business-os/privacy-policy.html)
 
-Edit the placeholder contact email in that file before publishing.
+(It can take a couple of minutes after enabling for the first build to
+finish — if the link 404s immediately after setup, wait and retry.) From
+here on, editing `docs/privacy-policy.md` and pushing to `main` updates the
+live page automatically — no further manual step.
+
+**Still needed:** edit the placeholder contact email in
+`docs/privacy-policy.md` before using this URL in the Play Console listing.
 
 ### 2. Create the app in Play Console (one-time, manual — unavoidable)
 
