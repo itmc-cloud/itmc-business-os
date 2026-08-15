@@ -1,0 +1,14 @@
+ITMC Bussines OS helps software and development service businesses quote, invoice, and get paid, without spreadsheets or a subscription.
+
+FEATURES
+
+- Client list: keep contact and billing details for everyone you work with.
+- Service catalog: define your services and rates once (e.g. "Backend API development" per hour), then reuse them in every estimate instead of retyping prices.
+- Cost estimates: build a line-item estimate for a client, pull items straight from your catalog, adjust quantity/tax/discount, and see the total update live.
+- One-tap invoicing: convert any accepted estimate into an invoice with a generated invoice number and due date, or start an invoice from scratch.
+- PDF export: share a clean, professional PDF of any estimate or invoice directly from the app.
+- Status tracking: mark estimates as sent/accepted and invoices as sent/paid so you always know what's outstanding.
+
+PRIVACY
+
+All data stays on your device. There is no account, no login, and no data is sent to any server. Nothing is collected, tracked, or shared with third parties.

@@ -1,0 +1,7 @@
+# Android application id — must match android/app/build.gradle.kts applicationId.
+package_name("com.itmc.itmc_estimator")
+
+# Path to the Google Play service account JSON key (see docs/PUBLISHING.md for
+# how to create it). Never commit the real file — it's git-ignored. In CI this
+# is written from a secret just before Fastlane runs (see .github/workflows/release.yml).
+json_key_file("fastlane/play-service-account.json")

@@ -1,0 +1,50 @@
+default_platform(:android)
+
+AAB_PATH = "build/app/outputs/bundle/release/app-release.aab"
+
+platform :android do
+  desc "Build the release .aab (requires android/key.properties — see docs/PUBLISHING.md)"
+  lane :build_release do
+    Dir.chdir("..") do
+      sh("flutter", "build", "appbundle", "--release")
+    end
+  end
+
+  desc "Capture Play Store screenshots automatically from a running emulator/device " \
+       "(no manual screenshotting — see scripts/capture_screenshots.sh). Run this " \
+       "locally whenever the UI changes meaningfully, then commit the updated images."
+  lane :screenshots do
+    Dir.chdir("..") do
+      sh("bash", "scripts/capture_screenshots.sh")
+    end
+  end
+
+  desc "Build and upload to the Internal testing track (binary only — fast iteration, " \
+       "no listing changes)"
+  lane :deploy_internal do
+    build_release
+    upload_to_play_store(
+      track: "internal",
+      aab: "../#{AAB_PATH}",
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+    )
+  end
+
+  desc "Build and upload to Production — binary, store listing text, icon/feature " \
+       "graphic, and screenshots, all pushed from fastlane/metadata/ with zero manual " \
+       "Play Console form-filling. Pass rollout: '0.1' etc. for a staged rollout " \
+       "(default 100%)."
+  lane :deploy_production do |options|
+    build_release
+    upload_to_play_store(
+      track: "production",
+      aab: "../#{AAB_PATH}",
+      rollout: (options[:rollout] || "1.0"),
+      # Metadata/images/screenshots are read from fastlane/metadata/android/ —
+      # nothing here needs manual entry in Play Console, ever, once that
+      # folder has content (see docs/PUBLISHING.md).
+    )
+  end
+end

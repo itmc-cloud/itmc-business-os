@@ -1,0 +1,11 @@
+.git
+.claude
+.idea
+.dart_tool
+build
+legacy-appcreator24
+android/key.properties
+android/*.jks
+android/*.keystore
+fastlane/report.xml
+fastlane/play-service-account.json
