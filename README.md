@@ -17,6 +17,10 @@ pipeline (Docker + Fastlane + GitHub Actions) are all reusable as-is.
 — one linear checklist from installing Flutter through publishing on Google
 Play. Everything below is the same information split into reference docs.
 
+**Want the full picture in one place (architecture diagrams, CI/CD flow, and
+a checklist for reusing this whole repo as a template for a new project)?
+→ [docs/FULL_GUIDE.md](docs/FULL_GUIDE.md)**
+
 ## Structure
 
 ```text
@@ -28,10 +32,12 @@ lib/
   screens/     Clients, Catalog, Estimates, Invoices UI
 docs/
   GETTING_STARTED.md   Start here — full checklist, setup to publish
+  FULL_GUIDE.md   Everything in one place + diagrams + template-reuse checklist
   RUNNING.md      Local dev/test setup, golden-path test script
   PUBLISHING.md   Google Play release setup — what's automated vs. one-time manual
   store-listing-answers.md   Answer key for the content rating + data safety forms
   privacy-policy.md   Hosted via GitHub Pages; linked from the Play listing
+  images/         Architecture and CI/CD diagrams
 fastlane/
   metadata/android/en-US/   Store listing text, changelog, icon/feature graphic,
                             screenshots — all pushed automatically, nothing

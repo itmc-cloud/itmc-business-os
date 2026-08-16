@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 520" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="940" height="520" fill="#ffffff"/>
+
+  <!-- dev branch -->
+  <rect x="30" y="30" width="180" height="50" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="120" y="60" text-anchor="middle" font-size="13" font-weight="600" fill="#1e3a8a">push to dev</text>
+
+  <line x1="210" y1="55" x2="270" y2="55" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="278" y="30" width="220" height="50" rx="8" fill="#e0e7ff" stroke="#4f46e5"/>
+  <text x="388" y="55" text-anchor="middle" font-size="12.5" font-weight="600" fill="#312e81">ci.yml</text>
+  <text x="388" y="72" text-anchor="middle" font-size="11" fill="#4338ca">analyze · test · build apk</text>
+
+  <!-- PR -->
+  <line x1="120" y1="80" x2="120" y2="140" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="30" y="148" width="180" height="50" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="120" y="178" text-anchor="middle" font-size="13" font-weight="600" fill="#1e3a8a">PR: dev → main</text>
+
+  <line x1="210" y1="173" x2="270" y2="173" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="278" y="148" width="220" height="50" rx="8" fill="#e0e7ff" stroke="#4f46e5"/>
+  <text x="388" y="173" text-anchor="middle" font-size="12.5" font-weight="600" fill="#312e81">ci.yml</text>
+  <text x="388" y="190" text-anchor="middle" font-size="11" fill="#4338ca">same checks, on the PR</text>
+
+  <!-- main -->
+  <line x1="120" y1="198" x2="120" y2="258" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="30" y="266" width="180" height="50" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="120" y="291" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">main</text>
+  <text x="120" y="307" text-anchor="middle" font-size="10.5" fill="#166534">production branch</text>
+
+  <!-- tag -->
+  <line x1="120" y1="316" x2="120" y2="376" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="30" y="384" width="180" height="50" rx="8" fill="#fef9c3" stroke="#ca8a04"/>
+  <text x="120" y="409" text-anchor="middle" font-size="12.5" font-weight="600" fill="#713f12">git tag v*.*.*</text>
+  <text x="120" y="425" text-anchor="middle" font-size="10.5" fill="#854d0e">+ git push --tags</text>
+
+  <!-- release.yml -->
+  <line x1="210" y1="409" x2="270" y2="409" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="278" y="360" width="230" height="98" rx="8" fill="#ffedd5" stroke="#ea580c"/>
+  <text x="393" y="384" text-anchor="middle" font-size="12.5" font-weight="700" fill="#7c2d12">release.yml</text>
+  <text x="393" y="402" text-anchor="middle" font-size="11" fill="#9a3412">flutter build appbundle</text>
+  <text x="393" y="418" text-anchor="middle" font-size="11" fill="#9a3412">sign with key.properties</text>
+  <text x="393" y="434" text-anchor="middle" font-size="11" fill="#9a3412">(from GitHub secrets)</text>
+  <text x="393" y="450" text-anchor="middle" font-size="11" fill="#9a3412">bundle exec fastlane ...</text>
+
+  <!-- Fastlane -->
+  <line x1="508" y1="409" x2="568" y2="409" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="576" y="360" width="180" height="98" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="666" y="388" text-anchor="middle" font-size="12.5" font-weight="700" fill="#7f1d1d">Fastlane</text>
+  <text x="666" y="406" text-anchor="middle" font-size="10.5" fill="#991b1b">binary +</text>
+  <text x="666" y="420" text-anchor="middle" font-size="10.5" fill="#991b1b">listing text/images +</text>
+  <text x="666" y="434" text-anchor="middle" font-size="10.5" fill="#991b1b">screenshots</text>
+  <text x="666" y="450" text-anchor="middle" font-size="10.5" fill="#991b1b">(service account auth)</text>
+
+  <!-- Play Console -->
+  <line x1="756" y1="409" x2="810" y2="409" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="818" y="330" width="110" height="60" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="873" y="355" text-anchor="middle" font-size="11.5" font-weight="600" fill="#4c1d95">Internal</text>
+  <text x="873" y="370" text-anchor="middle" font-size="10" fill="#5b21b6">testing track</text>
+  <text x="873" y="383" text-anchor="middle" font-size="9.5" fill="#6d28d9">(tag push, default)</text>
+
+  <rect x="818" y="428" width="110" height="60" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="873" y="453" text-anchor="middle" font-size="11.5" font-weight="600" fill="#4c1d95">Production</text>
+  <text x="873" y="468" text-anchor="middle" font-size="9.5" fill="#6d28d9">(manual workflow_dispatch,</text>
+  <text x="873" y="480" text-anchor="middle" font-size="9.5" fill="#6d28d9">pick "production")</text>
+
+  <line x1="756" y1="409" x2="810" y2="458" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <text x="30" y="500" font-size="12" fill="#64748b">release.yml triggers on version tags regardless of branch — ci.yml is the only branch-scoped gate.</text>
+
+  <defs>
+    <marker id="arrow2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

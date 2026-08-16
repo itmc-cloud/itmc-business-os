@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+
+  <!-- Screens layer -->
+  <text x="30" y="30" font-size="13" font-weight="700" fill="#5b21b6" letter-spacing="1">UI — lib/screens/</text>
+  <g font-size="13" fill="#3b0764">
+    <rect x="30" y="42" width="130" height="46" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="95" y="70" text-anchor="middle">Clients</text>
+    <rect x="175" y="42" width="130" height="46" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="240" y="70" text-anchor="middle">Catalog</text>
+    <rect x="320" y="42" width="130" height="46" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="385" y="70" text-anchor="middle">Estimates</text>
+    <rect x="465" y="42" width="130" height="46" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="530" y="70" text-anchor="middle">Invoices</text>
+  </g>
+
+  <!-- arrows down to providers -->
+  <g stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="95" y1="88" x2="95" y2="120"/>
+    <line x1="240" y1="88" x2="240" y2="120"/>
+    <line x1="385" y1="88" x2="385" y2="120"/>
+    <line x1="530" y1="88" x2="530" y2="120"/>
+  </g>
+
+  <!-- Providers layer -->
+  <text x="30" y="145" font-size="13" font-weight="700" fill="#1d4ed8" letter-spacing="1">STATE — lib/providers/ (ChangeNotifier)</text>
+  <g font-size="12.5" fill="#1e3a8a">
+    <rect x="30" y="157" width="130" height="46" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="95" y="184" text-anchor="middle">ClientProvider</text>
+    <rect x="175" y="157" width="130" height="46" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="240" y="184" text-anchor="middle">CatalogProvider</text>
+    <rect x="320" y="157" width="130" height="46" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="385" y="184" text-anchor="middle">EstimateProvider</text>
+    <rect x="465" y="157" width="130" height="46" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="530" y="184" text-anchor="middle">InvoiceProvider</text>
+  </g>
+
+  <!-- arrows converge down to DbHelper -->
+  <g stroke="#94a3b8" stroke-width="2">
+    <line x1="95" y1="203" x2="230" y2="240"/>
+    <line x1="240" y1="203" x2="235" y2="240"/>
+    <line x1="385" y1="203" x2="245" y2="240"/>
+    <line x1="530" y1="203" x2="250" y2="240" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- DbHelper -->
+  <rect x="130" y="248" width="220" height="50" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="240" y="278" text-anchor="middle" font-size="13" fill="#14532d" font-weight="600">DbHelper (lib/db/)</text>
+
+  <line x1="240" y1="298" x2="240" y2="330" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- SQLite -->
+  <rect x="130" y="338" width="220" height="50" rx="8" fill="#fef9c3" stroke="#ca8a04"/>
+  <text x="240" y="368" text-anchor="middle" font-size="13" fill="#713f12" font-weight="600">SQLite — on-device only</text>
+
+  <!-- PDF branch -->
+  <line x1="465" y1="203" x2="620" y2="240" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="560" y="248" width="180" height="50" rx="8" fill="#ffe4e6" stroke="#e11d48"/>
+  <text x="650" y="278" text-anchor="middle" font-size="13" fill="#881337" font-weight="600">pdf_generator.dart</text>
+
+  <line x1="650" y1="298" x2="650" y2="330" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="560" y="338" width="180" height="50" rx="8" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="650" y="362" text-anchor="middle" font-size="12.5" fill="#334155" font-weight="600">Android share sheet</text>
+  <text x="650" y="378" text-anchor="middle" font-size="11" fill="#64748b">(printing package)</text>
+
+  <text x="30" y="430" font-size="12" fill="#64748b">No backend, no login — everything above runs entirely on-device.</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>
