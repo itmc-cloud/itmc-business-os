@@ -46,7 +46,10 @@ jobs:
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: |
-          echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/upload-keystore.jks
+          # storeFile below is relative to android/app/ (that's where Gradle's
+          # file() resolves it from in app/build.gradle.kts), so the keystore
+          # must be decoded into android/app/, not android/.
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/app/upload-keystore.jks
           cat > android/key.properties <<EOF
           storePassword=$ANDROID_KEYSTORE_PASSWORD
           keyPassword=$ANDROID_KEY_PASSWORD
