@@ -10,14 +10,48 @@ Play Console UI for these legal/policy declarations, regardless of tool.
 
 ---
 
+## Store listing content (icon, screenshots, descriptions) — already automated
+
+Before the manual steps below: the store listing content itself — title,
+short/full description, icon, feature graphic, and screenshots — is
+**not** part of this manual walkthrough, because it's already fully
+scripted and pushed automatically by Fastlane on every release. Nothing
+below asks you to type these into the Play Console UI by hand.
+
+| Content | Where it lives | How it's produced |
+| --- | --- | --- |
+| Title / short & full description | `fastlane/metadata/android/en-US/title.txt`, `short_description.txt`, `full_description.txt` | Hand-written once, edit the `.txt` file directly for changes |
+| Changelog (release notes) | `fastlane/metadata/android/en-US/changelogs/<versionCode>.txt` | One new file per release, plain text |
+| Icon + feature graphic | `fastlane/metadata/android/en-US/images/icon.png`, `featureGraphic.png` | `scripts/generate_placeholder_graphics.ps1` (swap for real art anytime, same filenames) |
+| Screenshots | `fastlane/metadata/android/en-US/images/phoneScreenshots/` | `scripts/capture_screenshots.sh` — drives the running app via `adb`/accessibility tree, no manual screenshotting |
+
+Editing any of these and pushing a release tag re-uploads them
+automatically — see [PUBLISHING.md](PUBLISHING.md#every-release-after-that).
+The only thing to verify by hand, once, is that the Store listing page in
+Play Console (**Grow users → Store presence → Store listings**) actually
+shows this content after the first upload — see step 3 below for what
+"looks complete" means.
+
+---
+
 ## 0. Prerequisite check
 
 Open **Dashboard** (left nav) first — it shows a checklist with
 locked/unlocked steps for what's still blocking the app out of draft
-status. **Publishing overview** (left nav) lists every pending change
-grouped by area (Store listings, App content, Store settings,
-Production/Testing tracks); its "Send app for review" button stays
-disabled until the Dashboard's required steps are complete.
+status. Note the "Temporary app name '... (unreviewed)'" tag next to the
+package name — that's normal for a draft app and persists until Google
+finishes reviewing a submitted release, it isn't itself a blocker:
+
+![Play Console Dashboard example](images/play-console-dashboard.png)
+
+**Publishing overview** (left nav) lists every pending change grouped by
+area (Store listings, App content, Store settings, Production/Testing
+tracks); its "Send app for review" button stays disabled until the
+Dashboard's required steps are complete. Once changes are submitted, this
+same page shows a "Changes in review" section listing exactly what was
+sent — production release, countries/regions, store listing, etc:
+
+![Play Console Publishing overview, changes in review](images/play-console-publishing-overview.png)
 
 ---
 
@@ -104,6 +138,58 @@ click **Save** → confirm "Go to Publishing overview" if ready, or
 Category selection and the mature-content Yes/No answers are factual
 claims about the app that drive an official age rating — confirm with the
 app owner rather than assume.
+
+---
+
+## 3b. App content — Target audience, Data safety, Ads, Health apps
+
+Path for all of these: **Monitor and improve → Policy and programs →
+App content**. Each declaration listed there is either "Not started",
+"In progress", or already shows a green check from a prior session —
+check the **Actioned** tab first, since these don't need to be redone
+once complete. Exact answer for every question, based on what this app
+actually does, is in [store-listing-answers.md](store-listing-answers.md)
+— this section is only the click path, not the answers.
+
+**Target audience and content** (App content → Target audience):
+1. Click **Start** / **Edit declaration**.
+2. Select the target age group(s) — a business/utility app selects the
+   adult range, not "designed for children".
+3. Answer the "Is your app designed to appeal to children?" question per
+   the answer key.
+4. Click through the remaining pages (Next) and **Save** at the end.
+
+**Data safety form** (App content → Data safety):
+1. Click **Start** / **Edit declaration**.
+2. First page: "Does your app collect or share any of the required user
+   data types?" — this is the gate question; answering per the answer key
+   here determines whether the rest of the form even asks about specific
+   categories (location, personal info, financial info, etc.).
+3. If the form still lists data-type categories individually, go through
+   each and answer per the answer key.
+4. A later page asks about encryption in transit and a data-deletion
+   mechanism — answer per the answer key.
+5. Final page is a **Preview** of the data safety section as it'll appear
+   on the store listing — review, then **Submit** / **Save**.
+
+**Ads declaration** (App content → Ads):
+1. Click **Start** / **Edit declaration**.
+2. Answer "Does your app contain ads?" per the answer key.
+3. **Save**.
+
+**Health apps declaration** (App content → Health):
+1. Click **Start** / **Edit declaration** (this declaration doesn't
+   always appear for every app category — if App content doesn't list it,
+   it doesn't apply and there's nothing to do).
+2. Answer whether the app is a health app / collects health data per the
+   answer key.
+3. **Save**.
+
+Each of these declarations shows in **Publishing overview** under
+"Changes not yet submitted for review" (or "Changes in review" once
+submitted) alongside the content rating, countries, and release changes —
+they all get sent together when you submit changes for review in
+[step 5](#5-publishing-overview--submit-for-review).
 
 ---
 

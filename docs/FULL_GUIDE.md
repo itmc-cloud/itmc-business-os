@@ -83,6 +83,8 @@ docs/
   GETTING_STARTED.md          Quick-start checklist, phase by phase
   RUNNING.md                  Local dev/test setup, golden-path test script
   PUBLISHING.md               One-time Play Console/Cloud setup, in detail
+  play-console-manual-steps.md  Click-by-click Play Console UI walkthrough (testers,
+                              countries, content rating, release, submit for review)
   store-listing-answers.md    Exact answers for the content-rating + data-safety forms
   privacy-policy.md           Hosted live via GitHub Pages, linked from the Play listing
   images/                     Diagrams for this guide
@@ -141,6 +143,10 @@ git tag v1.0.1 && git push origin v1.0.1
 
 Content rating questionnaire and data safety form answers (both one-time,
 manual — no API exists for either) → **[store-listing-answers.md](store-listing-answers.md)**.
+Exact click path through every Play Console screen involved (testers,
+countries/regions, content rating, target audience, data safety, ads,
+health apps, creating the production release, submitting for review) →
+**[play-console-manual-steps.md](play-console-manual-steps.md)**.
 
 ## 8. Reusing this repo as a template for a new project
 

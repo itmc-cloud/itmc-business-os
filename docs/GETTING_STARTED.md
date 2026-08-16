@@ -98,10 +98,14 @@ brand-new app listing. Everything you need is already written for you:
 5. Privacy policy URL: enable GitHub Pages once (repo Settings → Pages →
    deploy from `main` /docs) and use the resulting URL to
    `docs/privacy-policy.md`.
-6. Content rating questionnaire + Data safety form: exact answer for every
-   question → **[docs/store-listing-answers.md](store-listing-answers.md)**.
+6. Content rating, target audience, data safety, ads, and health apps
+   declarations: exact answer for every question →
+   **[docs/store-listing-answers.md](store-listing-answers.md)**.
 7. Upload one build (Internal testing → Create release) to get the app out
    of draft state — the `.aab` from Phase 3.
+8. Countries/regions, creating the production release, and submitting
+   changes for Google's review: click-by-click walkthrough →
+   **[docs/play-console-manual-steps.md](play-console-manual-steps.md)**.
 
 Full detail → **[docs/PUBLISHING.md](PUBLISHING.md)**.
 
