@@ -1,11 +1,15 @@
 default_platform(:android)
 
-AAB_PATH = "build/app/outputs/bundle/release/app-release.aab"
+# Absolute paths anchored to this Fastfile's own location, rather than
+# relative paths that depend on assuming what Fastlane's working directory
+# is at lane-execution time (that assumption broke in CI — see git history).
+PROJECT_ROOT = File.expand_path("..", __dir__)
+AAB_PATH = File.join(PROJECT_ROOT, "build/app/outputs/bundle/release/app-release.aab")
 
 platform :android do
   desc "Build the release .aab (requires android/key.properties — see docs/PUBLISHING.md)"
   lane :build_release do
-    Dir.chdir("..") do
+    Dir.chdir(PROJECT_ROOT) do
       sh("flutter", "build", "appbundle", "--release")
     end
   end
@@ -14,7 +18,7 @@ platform :android do
        "(no manual screenshotting — see scripts/capture_screenshots.sh). Run this " \
        "locally whenever the UI changes meaningfully, then commit the updated images."
   lane :screenshots do
-    Dir.chdir("..") do
+    Dir.chdir(PROJECT_ROOT) do
       sh("bash", "scripts/capture_screenshots.sh")
     end
   end
@@ -25,7 +29,7 @@ platform :android do
     build_release
     upload_to_play_store(
       track: "internal",
-      aab: "../#{AAB_PATH}",
+      aab: AAB_PATH,
       skip_upload_metadata: true,
       skip_upload_images: true,
       skip_upload_screenshots: true,
@@ -40,7 +44,7 @@ platform :android do
     build_release
     upload_to_play_store(
       track: "production",
-      aab: "../#{AAB_PATH}",
+      aab: AAB_PATH,
       rollout: (options[:rollout] || "1.0"),
       # Metadata/images/screenshots are read from fastlane/metadata/android/ —
       # nothing here needs manual entry in Play Console, ever, once that
