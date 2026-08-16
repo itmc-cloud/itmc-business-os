@@ -27,6 +27,11 @@ controls. No tool, including Google's own CLI, can script around these:
 Everything in the ❌ column is a one-time cost. After it's done once, every
 future release is fully automated.
 
+For a click-by-click walkthrough of the Play Console screens involved
+(testers, countries/regions, content rating questionnaire, creating a
+production release, submitting for review), see
+[play-console-manual-steps.md](play-console-manual-steps.md).
+
 ## One-time setup
 
 ### 1. Host the privacy policy (needed for the store listing)
