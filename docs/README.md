@@ -3,6 +3,14 @@
 Start here. Docs are ordered by when you'd actually reach for them, from
 first setup to ongoing release work.
 
+## Read this one first
+
+- **[COMPLETE_MANUAL.md](COMPLETE_MANUAL.md)** — the whole lifecycle in one
+  self-contained document: installing Flutter, what the project is made of,
+  running it, building/exporting it, branching & CI, one-time Google Play
+  setup, Fastlane, the tag/release workflow, and the Play Console manual
+  forms. Everything below goes deeper on one specific part of it.
+
 ## Start / run
 
 - **[GETTING_STARTED.md](GETTING_STARTED.md)** — one linear checklist,
