@@ -13,6 +13,13 @@ runs entirely on-device (no login, no server) and is set up to publish to
 Google Play with almost everything automated — building, signing,
 uploading, store listing text, and even screenshots.
 
+**Branching:** `main` is the production branch — only merges and release
+tags land here. `dev` is where ongoing work happens. Push to `dev`, open a
+PR into `main` when a change is ready to ship, then tag a release from
+`main` (Phase 8). `.github/workflows/ci.yml` runs lint/test/build checks on
+every push to `dev` and every PR into `main`, separate from
+`release.yml` (which only runs on version tags, regardless of branch).
+
 ## Phase 1 — Install the development environment
 
 You need three things: the Flutter SDK, the Android SDK, and one Android
