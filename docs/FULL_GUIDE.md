@@ -3,8 +3,9 @@
 This is the single comprehensive reference for this project: what it is, how
 it's built, how to run/test/publish it, and — since this repo is meant to be
 reused as a starting point for future projects — exactly what to change to
-adapt it into a brand-new app. Shorter, task-focused docs also exist
-(`GETTING_STARTED.md`, `RUNNING.md`, `PUBLISHING.md`,
+adapt it into a brand-new app. Shorter, task-focused docs also exist (see
+[docs/README.md](README.md) for the full index — `GETTING_STARTED.md`,
+`RUNNING.md`, `PUBLISHING.md`, `FASTLANE.md`, `play-console-manual-steps.md`,
 `store-listing-answers.md`); this doc ties everything together in one place
 and adds the "reuse this as a template" and "lessons learned" material that
 doesn't belong in a quick-start.
@@ -79,15 +80,17 @@ scripts/
   release.yml                 Build+sign+upload — runs on version tags (any branch), or manual dispatch
 Dockerfile                    Reproducible release-build image (not needed for day-to-day dev)
 docs/
+  README.md                   Index of all docs, ordered by when you'd reach for them
   FULL_GUIDE.md               This file
   GETTING_STARTED.md          Quick-start checklist, phase by phase
   RUNNING.md                  Local dev/test setup, golden-path test script
   PUBLISHING.md               One-time Play Console/Cloud setup, in detail
+  FASTLANE.md                 What Fastlane is, the lanes in this repo, how to run one locally
   play-console-manual-steps.md  Click-by-click Play Console UI walkthrough (testers,
                               countries, content rating, release, submit for review)
   store-listing-answers.md    Exact answers for the content-rating + data-safety forms
   privacy-policy.md           Hosted live via GitHub Pages, linked from the Play listing
-  images/                     Diagrams for this guide
+  images/                     Diagrams and reference screenshots for these guides
 legacy-appcreator24/          The original AppCreator24-built .aab, kept for reference only
 ```
 

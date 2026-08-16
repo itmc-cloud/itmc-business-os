@@ -1,5 +1,9 @@
 # Publishing to Google Play
 
+Uploading/promoting builds is done via Fastlane lanes — see
+[FASTLANE.md](FASTLANE.md) for what each lane does and how they're
+triggered, if you want that detail alongside this setup guide.
+
 This project automates as much of publishing as Google allows any tool to
 automate: building the signed `.aab`, uploading it, pushing the store
 listing text (title/description/changelog), the icon and feature graphic,
