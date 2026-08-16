@@ -11,13 +11,14 @@ on:
   workflow_dispatch:
     inputs:
       track:
-        description: "Play Console track to deploy to"
+        description: "internal: build+upload fresh. production: promote the build already on internal (no rebuild — this is what you want after testing internal). production-fresh-build: build+upload a new binary straight to production, skipping internal entirely (needs pubspec.yaml's build number bumped first)."
         required: true
         default: "internal"
         type: choice
         options:
           - internal
           - production
+          - production-fresh-build
 
 jobs:
   deploy:
@@ -72,6 +73,10 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.track == 'internal'
         run: bundle exec fastlane android deploy_internal
 
-      - name: Deploy (manual, production)
+      - name: Promote internal build to production
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.track == 'production'
+        run: bundle exec fastlane android promote_production
+
+      - name: Deploy fresh build directly to production
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.track == 'production-fresh-build'
         run: bundle exec fastlane android deploy_production

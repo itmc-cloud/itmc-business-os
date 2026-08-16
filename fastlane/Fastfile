@@ -36,19 +36,38 @@ platform :android do
     )
   end
 
-  desc "Build and upload to Production — binary, store listing text, icon/feature " \
-       "graphic, and screenshots, all pushed from fastlane/metadata/ with zero manual " \
-       "Play Console form-filling. Pass rollout: '0.1' etc. for a staged rollout " \
-       "(default 100%)."
+  desc "Promote the build already sitting on Internal testing straight to " \
+       "Production — no rebuild, same binary/version code that's already been " \
+       "tested. This is the normal path: test on internal, then promote that " \
+       "exact build. Pass rollout: '0.1' etc. for a staged rollout (default 100%)."
+  lane :promote_production do |options|
+    upload_to_play_store(
+      track: "internal",
+      track_promote_to: "production",
+      rollout: (options[:rollout] || "1.0"),
+      skip_upload_aab: true,
+      skip_upload_apk: true,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      skip_upload_changelogs: true,
+    )
+  end
+
+  desc "Build and upload a FRESH binary directly to Production — binary, store " \
+       "listing text, icon/feature graphic, and screenshots, all pushed from " \
+       "fastlane/metadata/ with zero manual Play Console form-filling. Only use " \
+       "this if you deliberately want production to differ from what's on " \
+       "internal (it needs pubspec.yaml's build number bumped first, since Play " \
+       "rejects re-uploading a version code that already exists on any track). " \
+       "Normally you want promote_production instead. Pass rollout: '0.1' etc. " \
+       "for a staged rollout (default 100%)."
   lane :deploy_production do |options|
     build_release
     upload_to_play_store(
       track: "production",
       aab: AAB_PATH,
       rollout: (options[:rollout] || "1.0"),
-      # Metadata/images/screenshots are read from fastlane/metadata/android/ —
-      # nothing here needs manual entry in Play Console, ever, once that
-      # folder has content (see docs/PUBLISHING.md).
     )
   end
 end
