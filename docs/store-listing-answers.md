@@ -72,3 +72,31 @@ Play Console → your app → Policy → App content → Data safety.
   for children." This also means you should answer **No** to any
   "designed for or appealing to children" style question, and the
   Families Policy / Ads-for-children sections won't apply.
+
+## Ads declaration
+
+Play Console → App content → Ads.
+
+- **"Does your app contain ads?"** → **No.** No ad SDK/network is
+  integrated in this app.
+
+## Health apps declaration
+
+Play Console → App content → Health apps.
+
+- This app doesn't collect, store, or display any health or fitness data
+  (no steps, workouts, medical records, symptoms, etc.) — it's a
+  business/invoicing tool. Answer **No** / select that your app is not a
+  health app, or skip this declaration if Play Console doesn't force an
+  answer for apps outside the health category.
+
+## App category & store settings
+
+- **Category:** Business (Play Console → Store settings → App category).
+- **Store listing (default, en-US):** should already show the title,
+  descriptions, icon, feature graphic, and screenshots pushed by Fastlane
+  (`fastlane/metadata/android/en-US/`) — open it once and confirm it looks
+  complete/saved rather than showing a "missing information" warning. If
+  anything looks missing, it's the automation's job to have filled it, not
+  something to type in by hand — check `fastlane/metadata/android/en-US/`
+  matches what you expect and re-run a release if not.
