@@ -269,3 +269,26 @@ from this template doesn't have to rediscover them:
   an AI assistant needs to use an image you've shared (e.g. an app icon),
   it may need you to save it to an actual path it can read, rather than
   just "seeing" it in the conversation.
+
+- **Scoping the service account to "testing tracks only" at setup, meaning
+  to widen it later, silently breaks the first production deploy.** The
+  build succeeds, every metadata/image upload succeeds, and only the very
+  last API call — committing the release to the production track — fails
+  with `Google Api Error: Invalid request - The caller does not have
+  permission`. It reads exactly like a pipeline bug. Grant full release
+  permission (or at least testing **and** production) in Play Console →
+  Users and permissions the first time, not "once we're ready to automate
+  production."
+
+- **The Fastlane store listing icon and the real installed app icon
+  (`android/app/src/main/res/mipmap-*/ic_launcher.png`) are two completely
+  independent files that nothing keeps in sync automatically.** This
+  project shipped a real designed icon to the store listing while the
+  actual installed app still used the stock Flutter logo, because
+  `flutter_launcher_icons`'s source file (`assets/icon/icon.png`) was
+  configured but never actually created/committed — so the generator was
+  never run. Google's automated review caught it and rejected the release
+  for a Misleading Claims violation ("app icon or name differs from your
+  store listing"). Fix: use the exact same source image for both, and
+  re-run `dart run flutter_launcher_icons` every time it changes — see
+  [DEPLOY_TEMPLATE.md §B.6](DEPLOY_TEMPLATE.md#b6-one-icon-source-used-twice).

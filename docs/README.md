@@ -36,6 +36,10 @@ first setup to ongoing release work.
   specific to what this app actually does.
 - **[privacy-policy.md](privacy-policy.md)** — the actual policy text,
   hosted live via GitHub Pages and linked from the Play Store listing.
+- **[DEPLOY_TEMPLATE.md](DEPLOY_TEMPLATE.md)** — the portable version of
+  all of the above: generic placeholders, meant to be copied wholesale
+  into a brand-new project's `docs/` folder, including the full manual
+  Play Console click-path and the pitfalls checklist.
 
 ## Reference
 
